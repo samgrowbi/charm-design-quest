@@ -2,12 +2,14 @@ import { lazy, Suspense, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { InlineBooking } from "@/components/InlineBooking";
+import { TrustStrip } from "@/components/TrustStrip";
+import { WhoIsThisFor } from "@/components/WhoIsThisFor";
 import { StickyCTA } from "@/components/StickyCTA";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { Toaster } from "sonner";
 import { useBookingNavigation } from "@/hooks/useBookingNavigation";
 import { TreatmentProvider } from "@/context/TreatmentContext";
-import { BODY_SCULPTING_TREATMENT } from "@/config/treatments";
+import { BAGGY_EYES_TREATMENT } from "@/config/treatments";
 import { BRAND_NAME } from "@/config/brand";
 
 const Results = lazy(() => import("@/components/Results").then(m => ({ default: m.Results })));
@@ -23,8 +25,10 @@ const Location = lazy(() => import("@/components/Location").then(m => ({ default
 const FAQ = lazy(() => import("@/components/FAQ").then(m => ({ default: m.FAQ })));
 const Footer = lazy(() => import("@/components/Footer").then(m => ({ default: m.Footer })));
 
-const BodySculptingInner = () => {
-  useEffect(() => { document.title = `${BRAND_NAME} | ${BODY_SCULPTING_TREATMENT.label}`; }, []);
+const BaggyEyesInner = () => {
+  useEffect(() => {
+    document.title = `${BRAND_NAME} | ${BAGGY_EYES_TREATMENT.label}`;
+  }, []);
   const { openBooking } = useBookingNavigation();
 
   return (
@@ -32,23 +36,25 @@ const BodySculptingInner = () => {
       <Navbar onBookingClick={openBooking} />
       <main>
         <Hero onBookingClick={openBooking} />
-        <section className="py-2 sm:py-12 bg-white" dir="ltr">
+        <section className="py-2 sm:py-4 bg-white" dir="ltr">
           <div className="container mx-auto px-4">
             <InlineBooking />
           </div>
         </section>
-        <Suspense fallback={<div className="min-h-[200px]" />}>
+        <TrustStrip />
+        <WhoIsThisFor />
+        <Suspense fallback={<div className="min-h-[150px]" />}>
           <Results />
           <ProblemSolution />
-          <Feedback />
           <Technology onBookingClick={openBooking} />
-          <ClientReviews />
           <VisitSteps />
-          <Partners />
-          <About onBookingClick={openBooking} />
-          <Location />
-          <Gallery />
+          <Feedback />
+          <ClientReviews />
           <FAQ />
+          <About onBookingClick={openBooking} />
+          <Partners />
+          <Gallery />
+          <Location />
         </Suspense>
       </main>
       <Suspense fallback={null}>
@@ -61,10 +67,10 @@ const BodySculptingInner = () => {
   );
 };
 
-const BodySculpting = () => (
-  <TreatmentProvider treatment={BODY_SCULPTING_TREATMENT}>
-    <BodySculptingInner />
+const BaggyEyes = () => (
+  <TreatmentProvider treatment={BAGGY_EYES_TREATMENT}>
+    <BaggyEyesInner />
   </TreatmentProvider>
 );
 
-export default BodySculpting;
+export default BaggyEyes;
