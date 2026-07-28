@@ -148,7 +148,7 @@ export function useAcuityBooking(onBookingSuccess?: () => void, isMobile?: boole
   }, [currentStep, treatmentConfig?.slug]);
 
   const appointmentTypeID = treatmentConfig?.appointmentTypeId || "91900403";
-  const calendarID = treatmentConfig?.calendarId || "11251085";
+  const calendarID = treatmentConfig?.calendarId || "12769252";
 
   const filterIntakeForms = (forms: IntakeForm[]) =>
     forms

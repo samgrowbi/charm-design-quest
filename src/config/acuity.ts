@@ -5,7 +5,7 @@ import treatmentImage from "@/assets/treatment-facial.webp";
 
 // Default = Instant Lift (Hermosa Medspa)
 export const DEFAULT_ACUITY_APPOINTMENT_TYPE_ID = "91900403";
-export const DEFAULT_ACUITY_CALENDAR_ID = "11251085";
+export const DEFAULT_ACUITY_CALENDAR_ID = "12769252";
 export const DEFAULT_ACUITY_TIMEZONE = "America/Los_Angeles";
 
 // Local treatment image for use with dynamic API data
