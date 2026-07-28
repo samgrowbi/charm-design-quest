@@ -180,7 +180,9 @@ export const INSTANT_LIFT_TREATMENT: TreatmentConfig = {
     { text: "Safe for all skin types and tones" },
   ],
   hideDeviceImage: true,
+  intakeFields: [CONCERNS_FIELD, AGE_RANGE_FIELD, PROMO_TERMS_FIELD, SMS_CONSENT_FIELD],
   faqs: SHARED_FAQS,
+
 };
 
 export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
@@ -209,7 +211,9 @@ export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
     { text: "Safe for delicate skin" },
   ],
   hideDeviceImage: true,
+  intakeFields: [PROMO_TERMS_FIELD, SMS_CONSENT_FIELD],
   faqs: [
+
     {
       question: "How does the Baggy Eyes treatment work?",
       answer:
@@ -250,7 +254,9 @@ export const LED_CRYO_TREATMENT: TreatmentConfig = {
     { text: "Safe for all skin types and tones" },
   ],
   hideDeviceImage: true,
+  intakeFields: [CONCERNS_FIELD, AGE_RANGE_FIELD, PROMO_TERMS_FIELD, SMS_CONSENT_FIELD],
   faqs: [
+
     {
       question: "How does the Face & Neck Lift + Cryo Treatment work?",
       answer:
