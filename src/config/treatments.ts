@@ -112,7 +112,7 @@ export const INSTANT_LIFT_TREATMENT: TreatmentConfig = {
   price: "79.99",
   originalPrice: "349.99",
   appointmentTypeId: "91900403",
-  calendarId: "11251085",
+  calendarId: "12769252",
   duration: 75,
   image: treatmentImage,
   technologyDescription: [
