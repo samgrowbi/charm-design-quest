@@ -10,6 +10,15 @@ export interface BeforeAfterResult {
   age?: number;
 }
 
+export interface IntakeField {
+  acuityFieldId: number;
+  label: string;
+  type: "checkboxes" | "radio" | "select" | "text" | "textarea" | "yesno";
+  options?: string[];
+  required: boolean;
+  helpText?: string;
+}
+
 export interface TreatmentConfig {
   /** URL slug, e.g. "instant-lift" or "led-cryo" */
   slug: string;
@@ -35,6 +44,8 @@ export interface TreatmentConfig {
   duration: number;
   /** Treatment image */
   image: string;
+  /** Intake fields (Acuity custom fields) that Sofia must collect */
+  intakeFields: IntakeField[];
   /** Technology section copy */
   technologyDescription: string[];
   /** Technology section title override */
@@ -70,7 +81,52 @@ export interface TreatmentConfig {
   };
 }
 
-const SHARED_FAQS = [
+const CONCERNS_FIELD: IntakeField = {
+  acuityFieldId: 17276807,
+  label: "Please tick your concerns",
+  type: "checkboxes",
+  options: [
+    "Sagging Neck",
+    "Sagging Cheeks",
+    "Fine Lines",
+    "Wrinkles",
+    "Acne",
+    "Pigmentation",
+    "Sun Damage",
+    "Dark Circles",
+    "Rosacea",
+    "Big Pores",
+    "Skin Texture",
+    "No Concerns",
+  ],
+  required: true,
+};
+
+const AGE_RANGE_FIELD: IntakeField = {
+  acuityFieldId: 17276808,
+  label: "Please specify your age range",
+  type: "radio",
+  options: ["Below 20", "21-34", "35-49", "50-65", "66+"],
+  required: true,
+};
+
+const PROMO_TERMS_FIELD: IntakeField = {
+  acuityFieldId: 17276811,
+  label: "I agree to the promotional cancellation policy",
+  type: "yesno",
+  required: true,
+  helpText:
+    "Promotional appointments can be rescheduled once, at least 24 hours in advance. No-shows or late reschedules forfeit the offer.",
+};
+
+const SMS_CONSENT_FIELD: IntakeField = {
+  acuityFieldId: 17276812,
+  label: "I agree to receive SMS + email appointment reminders",
+  type: "yesno",
+  required: true,
+};
+
+
   {
     question: "Who is this treatment for?",
     answer:
