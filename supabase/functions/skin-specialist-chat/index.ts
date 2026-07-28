@@ -31,14 +31,38 @@ const TREATMENTS: Record<string, TreatmentInfo> = {
   "instant-lift": {
     slug: "instant-lift",
     name: "Instant Lift & Skin Tightening Treatment",
-    appointmentTypeId: "93509464",
+    appointmentTypeId: "91900403",
     price: "79.99",
     originalPrice: "349.99",
-    duration: 60,
+    duration: 75,
     goodFor:
       "Women 35+ with fine lines, loss of firmness, dull or uneven tone, tired-looking complexion. No injectables, no downtime.",
     shortPitch:
       "Specific wavelengths of LED light go into the deeper layers of your skin and switch on your own collagen production. Most clients leave with a visible glow and lift after the first session.",
+  },
+  "baggy-eyes": {
+    slug: "baggy-eyes",
+    name: "Non-Surgical Baggy Eyes Treatment",
+    appointmentTypeId: "89864520",
+    price: "69.99",
+    originalPrice: "299.99",
+    duration: 60,
+    goodFor:
+      "Anyone bothered by under-eye puffiness, dark circles, or fine lines around the eyes. Non-surgical, no needles, no downtime.",
+    shortPitch:
+      "Targeted light and cooling technology refreshes the delicate under-eye area, reduces puffiness, and softens fine lines - a gentle non-surgical alternative to eye-lift procedures.",
+  },
+  "led-cryo": {
+    slug: "led-cryo",
+    name: "LED + Cryo Face & Neck Lift Treatment",
+    appointmentTypeId: "91285301",
+    price: "89.99",
+    originalPrice: "349.99",
+    duration: 60,
+    goodFor:
+      "Clients wanting an immediate lift, firmer skin, and depuffing along the jawline and neck. Great before events.",
+    shortPitch:
+      "Combines LED light therapy with cryotherapy - stimulates collagen while cooling and firming the skin for an instant lifted, sculpted look.",
   },
 };
 
