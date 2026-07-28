@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
-import { TreatmentConfig, LED_TREATMENT } from "@/config/treatments";
+import { TreatmentConfig, INSTANT_LIFT_TREATMENT } from "@/config/treatments";
 
-const TreatmentContext = createContext<TreatmentConfig>(LED_TREATMENT);
+const TreatmentContext = createContext<TreatmentConfig>(INSTANT_LIFT_TREATMENT);
 
 export const TreatmentProvider = ({
   treatment,
