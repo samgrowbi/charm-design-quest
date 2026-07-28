@@ -126,6 +126,7 @@ const SMS_CONSENT_FIELD: IntakeField = {
   required: true,
 };
 
+const SHARED_FAQS = [
 
   {
     question: "Who is this treatment for?",
