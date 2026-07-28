@@ -1,104 +1,72 @@
-# Skin Specialist Chatbot
 
-צ'אט בוט AI שמדבר כמו יועצת עור אמיתית של Lumiere by Adriana, מייעץ על הטיפולים, ומסוגל לקבוע תור מלא בתוך השיחה — בלי לצאת ל-/book.
+# Task 2 - Full brand + treatment replacement, fixes, webhook
 
-## חוויית משתמש
+## Inputs collected (from you)
+- Brand: Hermosa Medspa, Auburn WA, 1001 Outlet Collection Way, (253) 263-1162
+- Email: booking.nwcosmetics@gmail.com
+- IG: nw.cosmetics / FB: profile.php?id=61581351143541
+- Hours: Mon-Sat 10:00 AM - 06:00 PM, Sun 11:00 AM - 06:00 PM
+- Meta Pixel: 1977038163053432
+- Timezone: America/Los_Angeles
+- Acuity: Instant Lift 91900403/cal 11251085 · Baggy Eyes 89864520/cal 12769252 · LED+Cryo 91285301/cal 12769252
+- Treatments (3): Instant Lift $79.99/75min, Baggy Eyes $69.99/60min, LED+Cryo $89.99/60min
+- Logo/favicon: copy from NW Cosmetics V2
+- OG image: auto-generate
 
-**מיקום**: בועה צפה ימנית-תחתונה (לא מסתירה את ה-StickyCTA — נמקם משמאל ל-CTA או נדאג ל-z-index/spacing).
+## Scope
 
-**מצב סגור**: כפתור עגול ורוד עם אווטאר של Adriana + נקודה ירוקה "Online" + טקסט עדין "Chat with a Specialist".
+### A. Sitewide brand replacement
+- Rewrite `src/config/brand.ts` (name, address, city, phone, email, socials, hours, maps link + embed).
+- Update `index.html` `<title>`, `<meta name=description>`, all `og:*`/`twitter:*`, JSON-LD (Organization + LocalBusiness).
+- Meta title template: `Hermosa Medspa | {Treatment Name}` - update the meta helper used per page.
+- Update `.lovable`/memory brand core rules to Hermosa (color palette stays pink, unless you say otherwise).
 
-**מצב פתוח**: חלון 380×600px (במובייל full-screen) עם:
-- Header: תמונה + שם "Adriana's Studio · Skin Specialist" + סטטוס Online + כפתור סגירה
-- אזור הודעות גליל אוטומטי + Markdown
-- אינדיקציית הקלדה ("...") בזמן ש-AI עונה
-- Composer: textarea + כפתור שליחה
-- הודעת פתיחה אוטומטית: "Hi 💕 I'm here to help you choose the right treatment and book your spot. What's bothering you most about your skin lately?"
+### B. Treatment surface rewire (3 total)
+- Keep `/` and `/instant-lift` -> Instant Lift.
+- Add new `/baggy-eyes` route + page + `/book/baggy-eyes` + `src/config/baggyEyes.ts`.
+- Keep `/led-cryo` + `/book/led-cryo`, update copy/price to $89.99/60min (already close).
+- Delete `/led`, `/body-sculpting`, `/book/led`, `/book/body-sculpting` routes + their page files + configs. Remove them from `treatmentRegistry.ts`.
+- Update `TreatmentContext` + `treatmentRegistry.ts` with the 3 live treatments' names, prices, durations, appointment type IDs, calendar IDs, copy pulled from hermosa-medspa.com.
+- Sitewide `#Spa in [City]` -> `#1 Spa in Auburn`.
 
-**Quick Replies** (כפתורי-צ'יפ מתחת להודעת הפתיחה): "Fine lines & wrinkles", "Sagging skin", "Dark spots", "Just exploring", "Book a session"
+### C. Assets
+- Copy `hermosa-medspa-logo.png` and favicon from NW Cosmetics V2 into `src/assets/` and `public/`.
+- Wire logo into Navbar/Footer, wire favicon into `index.html`, remove old GLO+ logos.
+- Generate new 1200x630 OG image for Hermosa; save `public/og-image.jpg`; delete any leftover Elixir OG references.
 
-## פרסונה ושיטת מכירה
+### D. Reviews
+- All review objects that carry a date get replaced with a random date in the last 30 days (no visible pattern). Applies to home + treatment pages.
 
-המודל מקבל system prompt מקיף:
-- **זהות**: יועצת עור מטעם הסטודיו של Adriana, חמה, מקצועית, לא דחפנית
-- **שפה**: אנגלית בלבד (האתר באנגלית). שיחה אישית, לא רובוטית, משפטים קצרים, אמוג'י עדינים בלבד
-- **ידע מלא** על 4 הטיפולים: LED Light Therapy, Instant Lift, LED + Cryo, Body Sculpting — מחירים, משך, מתאים למי, איך זה עובד, FAQ. הידע מוזן מ-`src/config/treatments.ts` בזמן ריצה
-- **שיטת המרה**: שואלת על הבעיה → מקשרת רגשית ("a lot of women your age feel exactly that") → מציעה את הטיפול הנכון → מסבירה בקצרה למה זה עובד → מציעה לקבוע "a quick free consultation slot"
-- **Guardrails**: לא מאבחנת מצבים רפואיים, לא מבטיחה תוצאות, מפנה לרופא במקרים אדומים, לא מציעה טיפולים שלא בקטלוג
+### E. Off-by-one date bug
+- Audit booking + reschedule date pickers for `toISOString`/UTC pitfalls; force local-date formatting (`format(date, "yyyy-MM-dd")` via date-fns) when sending to Acuity so the booked date == selected date in America/Los_Angeles.
 
-## זרימת הזמנת תור בתוך הצ'אט
+### F. Meta CAPI Purchase on "Checked in" / "Arrived"
+- Extend the existing Acuity offline webhook edge function: when `action` = `appointment.changed` and `label` is `Checked in` or `Arrived` (or similar Acuity status), send Meta CAPI `Purchase` event with `value` = treatment price (looked up by appointment type ID via `treatmentRegistry`) and `currency: USD`. Hash PII (email, phone, fn, ln) per Meta spec. Dedupe with `event_id = purchase_{appointmentId}`.
 
-הבוט מצויד בכלים (AI SDK tools) שמאפשרים לו לבצע בפועל את ההזמנה:
+### G. Dashes
+- Replace every `—` (em) and `–` (en) with `-` across `src/`, `supabase/functions/`, `index.html`, and memory files.
 
-1. **`recommend_treatment(concern)`** — מחזירה את הטיפול המומלץ + מחיר + סלוג
-2. **`get_available_dates(treatmentSlug, monthYYYYMM)`** — קוראת ל-`acuity-availability`
-3. **`get_available_times(treatmentSlug, date)`** — קוראת ל-`acuity-times`
-4. **`book_appointment(treatmentSlug, datetime, firstName, lastName, email, phone)`** — קוראת ל-`acuity-book`. מסומן `needsApproval` כדי שתופיע כרטיסיית "Confirm booking" עם הפרטים, וצריך לחיצת אישור לפני שליחה ל-Acuity
+### H. Webhook for Acuity "catch all"
+- Reuse (or create) the existing offline-conversions edge function URL. I'll give you the URL to paste into Acuity's Integrations > Webhooks > "Any change" (catch-all).
+- **STOP** and wait for you to confirm it's added before Task 3.
 
-הבוט אוסף שם, אימייל וטלפון בשיחה ("Perfect! What's the best email to send the confirmation to?"), ואז מציג סלוטים פנויים כ-chips לחיצים. אחרי ההזמנה — מציג כרטיסיית הצלחה עם תאריך/שעה ולינק ל-/thank-you (כולל אותם פרמטרים שהדף מצפה להם).
+## Technical notes
+- Route change list in `src/App.tsx`: add BaggyEyes + BookBaggyEyes imports/routes; delete Index (LED), BodySculpting, BookLed, BookBodySculpting routes and remove unused imports.
+- Files to delete: `src/pages/Index.tsx` (LED page), `src/pages/BodySculpting.tsx`, `src/pages/BookLed.tsx`, `src/pages/BookBodySculpting.tsx`, `src/config/led.ts` if present.
+- Files to add: `src/pages/BaggyEyes.tsx`, `src/pages/BookBaggyEyes.tsx`, `src/config/baggyEyes.ts`.
+- Reviews live inline in the Reviews component; regenerate with `Math.random`-picked dates at build time and hardcode them so the layout stays static.
+- The offline-conversions webhook already exists (uses `META_CAPI_ACCESS_TOKEN`). I'll extend, not recreate.
+- No changes to: pink brand palette, Playfair headings, sticky BOOK NOW button copy, 100px horizontal padding, or the Sofia chatbot (that's Task 3).
 
-## רנדור הודעות מיוחדות
+## Deliverable at end of Task 2
+- All brand info replaced.
+- 3 treatment surfaces live, old ones gone.
+- New OG image + favicon + logo wired.
+- Reviews randomized within last 30 days.
+- Off-by-one date bug fixed in book + reschedule.
+- Meta CAPI Purchase event wired for Checked in / Arrived.
+- No em/en dashes anywhere.
+- Webhook URL posted to you.
+- Task **stops** and waits for your confirmation Acuity is configured.
 
-הצ'אט מציג גם UI מובנה (לא רק טקסט):
-- **כרטיסיית טיפול**: כשהבוט ממליץ — תמונה + שם + מחיר + כפתור "Book this"
-- **בורר תאריכים**: רשת של chips של תאריכים פנויים מ-Acuity
-- **בורר שעות**: chips של שעות זמינות
-- **כרטיסיית אישור**: סיכום הזמנה + "Confirm" / "Change"
-- **כרטיסיית הצלחה**: ✓ ירוק + "Booked for {date} {time}" + "View confirmation →"
-
-## פרטים טכניים
-
-**Database (Lovable Cloud)** — שתי טבלאות:
-- `chat_conversations`: id, session_id (לא חייב משתמש מחובר — שימוש ב-anon UUID ב-localStorage), started_at, last_message_at, lead_email, lead_phone, lead_name, booked_appointment_id (nullable)
-- `chat_messages`: id, conversation_id, role ('user'/'assistant'/'tool'), content (jsonb — שומר UIMessage parts), created_at
-- RLS: גישה אנונימית מותרת לפי `session_id` (header X-Session-Id) — אין PII רגיש, רק שיחה. כן — ננעל UPDATE/DELETE ל-service-role בלבד
-
-**Edge Function**: `supabase/functions/skin-specialist-chat/index.ts`
-- משתמש ב-Vercel AI SDK עם Lovable AI Gateway, מודל `openai/gpt-5`
-- `streamText` עם system prompt + tools + `stopWhen: stepCountIs(50)`
-- מקבל `UIMessage[]` + `sessionId`, מחזיר `toUIMessageStreamResponse({ originalMessages, onFinish })` ושומר את ההודעה הסופית ל-`chat_messages`
-- ה-tools של Acuity קוראים ל-edge functions הקיימים `acuity-availability/times/book` (server-to-server דרך `fetch` ל-supabase URL)
-- מטפל ב-429 (rate limit) ו-402 (credits) עם הודעות ברורות
-- מבדיל treatments לפי slug → טוען appointmentTypeId
-
-**Client**:
-- חבילות חדשות: `ai`, `@ai-sdk/react`, `@ai-sdk/openai-compatible`, `react-markdown`, `remark-gfm`
-- AI Elements קומפוננטות: `conversation`, `message`, `prompt-input`, `shimmer`, `tool` (מותקן דרך CLI)
-- קומפוננטה ראשית: `src/components/chat/SkinSpecialistChat.tsx` (הבועה + החלון)
-- Hook: `src/hooks/useSkinChat.ts` — עוטף `useChat` עם `DefaultChatTransport` שמכוון ל-edge function, מעביר `sessionId` (מ-localStorage), טוען היסטוריה ראשונית מה-DB
-- בכל פתיחת חלון: GET `chat_messages` של ה-session → ממיר ל-`UIMessage[]` → מעביר ל-`useChat` initialMessages
-- ההודעה הראשונה הקבועה ("Hi 💕...") נשמרת רק אחרי שהמשתמש שולח ראשון, כדי לא לזהם DB בשיחות ריקות
-- מנוע אנליטיקה קיים (`src/lib/analytics.ts`): events חדשים `chat_opened`, `chat_message_sent`, `chat_booking_completed`
-
-**Lead capture (גם אם לא הזמין)**: ברגע שהמשתמש מוסר אימייל/טלפון בשיחה, ה-tool `save_lead(email, phone, name, concern)` שומר ל-`chat_conversations` כדי שתוכלי לראות לידים גם בלי הזמנה.
-
-**ביטול תופעות לוואי**:
-- ExitIntentPopup — אם הצ'אט פתוח, לא להראות
-- StickyCTA — להזיז שמאלה במובייל כדי לא להתנגש בבועה
-
-## טכנולוגיה
-
-| רכיב | בחירה |
-|---|---|
-| מודל | `openai/gpt-5` דרך Lovable AI Gateway |
-| SDK | Vercel AI SDK (`ai`, `@ai-sdk/react`) |
-| UI | AI Elements (`Conversation`, `Message`, `PromptInput`, `Shimmer`, `Tool`) + רכיבים מותאמים לכרטיסי טיפול/תאריך |
-| Backend | Supabase Edge Function `skin-specialist-chat` |
-| DB | 2 טבלאות עם RLS לפי session_id |
-| Booking | tools שקוראים ל-edge functions קיימים של Acuity |
-
-## אבני דרך ליישום
-
-1. מיגרציית DB ל-`chat_conversations` + `chat_messages` + RLS
-2. Edge function `skin-specialist-chat` עם system prompt, tools, וכתיבה ל-DB
-3. התקנת חבילות AI SDK + AI Elements
-4. קומפוננטות צ'אט (בועה, חלון, כרטיסיות מיוחדות)
-5. אינטגרציה לאתר (`App.tsx`), התאמת StickyCTA + ExitIntentPopup
-6. אנליטיקה
-7. בדיקות end-to-end: שיחת ייעוץ, הזמנת תור מלאה, ריענון דף ושחזור היסטוריה
-
-## הערות
-
-- לא נדרש login — השיחה עובדת לכל מבקר עם session_id ב-localStorage
-- מחיר: השיחות עולות קרדיטים של Lovable AI לפי שימוש (GPT-5 יקר יחסית); אם תרצי לחסוך נוכל לעבור ל-Gemini Flash בעלות נמוכה משמעותית
-- אם בעתיד תרצי dashboard לראות שיחות ולידים — נוסיף עמוד admin מוגן
+Reply "go" to execute, or send edits.
