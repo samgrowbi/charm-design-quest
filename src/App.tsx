@@ -12,7 +12,6 @@ import BookBaggyEyes from "./pages/BookBaggyEyes";
 import LedCryo from "./pages/LedCryo";
 import InstantLift from "./pages/InstantLift";
 import BaggyEyes from "./pages/BaggyEyes";
-import SkinSpecialistChat from "./components/chat/SkinSpecialistChat";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
 
@@ -43,7 +42,6 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <SkinSpecialistChat />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

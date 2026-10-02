@@ -135,6 +135,8 @@ export function Results() {
                       label={item.label}
                       name={'name' in item ? (item as any).name : undefined}
                       age={'age' in item ? (item as any).age : undefined}
+                      beforeAlt={`Before ${item.label.toLowerCase()} treatment${'name' in item && (item as any).name ? ` for ${(item as any).name}` : ''}`}
+                      afterAlt={`After ${item.label.toLowerCase()} treatment${'name' in item && (item as any).name ? ` for ${(item as any).name}` : ''}`}
                     />
                   )}
                 </CarouselItem>
