@@ -1,8 +1,8 @@
 # Landing page update
 
-- [ ] Replace homepage result images
-- [ ] Remove Sofia
-- [ ] Remove review platform logos
-- [ ] Compact mobile audience section
-- [ ] Compact five stats cards
-- [ ] Verify desktop, tablet, mobile, Meta Pixel, and preview health
+- [x] Replace homepage result images
+- [x] Remove Sofia
+- [x] Remove review platform logos
+- [x] Compact mobile audience section
+- [x] Compact five stats cards
+- [x] Verify desktop, tablet, mobile, Meta Pixel, and preview health
