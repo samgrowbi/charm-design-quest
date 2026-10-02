@@ -61,18 +61,18 @@ export function Results() {
 
       <div className="container mx-auto px-5 pt-0 md:pt-0">
         <div className="text-center mb-8 lg:mb-12 space-y-1 lg:space-y-2">
-          <p className="text-[18px] lg:text-base uppercase tracking-[0.2em] text-gray-400 font-bold">No Filters</p>
+          {!treatment.hideResultsBadges && <p className="text-[18px] lg:text-base uppercase tracking-[0.2em] text-gray-400 font-bold">No Filters</p>}
           <h2 className="hidden sm:block text-4xl lg:text-5xl xl:text-6xl font-serif font-normal text-gray-900 leading-tight">
             <span className="text-gray-900">Real People.</span> <AccentWord>Real Results.</AccentWord>
           </h2>
-          <div className="flex justify-center pt-2">
+          {!treatment.hideResultsBadges && <div className="flex justify-center pt-2">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 border border-green-200 rounded-full text-xs lg:text-sm font-medium text-green-700">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="text-green-600">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
               Verified Photos
             </span>
-          </div>
+          </div>}
         </div>
 
         <div className="relative">
@@ -135,8 +135,10 @@ export function Results() {
                       label={item.label}
                       name={'name' in item ? (item as any).name : undefined}
                       age={'age' in item ? (item as any).age : undefined}
-                      beforeAlt={`Before ${item.label.toLowerCase()} treatment${'name' in item && (item as any).name ? ` for ${(item as any).name}` : ''}`}
-                      afterAlt={`After ${item.label.toLowerCase()} treatment${'name' in item && (item as any).name ? ` for ${(item as any).name}` : ''}`}
+                      objectPosition={(item as any).objectPosition}
+                      hideBadge={treatment.hideResultsBadges}
+                      beforeAlt={treatment.hideResultsBadges && (item as any).name ? `Before and after treatment result - ${(item as any).name}, ${(item as any).age}` : `Before ${item.label.toLowerCase()} treatment${'name' in item && (item as any).name ? ` for ${(item as any).name}` : ''}`}
+                      afterAlt={treatment.hideResultsBadges && (item as any).name ? `Before and after treatment result - ${(item as any).name}, ${(item as any).age}` : `After ${item.label.toLowerCase()} treatment${'name' in item && (item as any).name ? ` for ${(item as any).name}` : ''}`}
                     />
                   )}
                 </CarouselItem>
