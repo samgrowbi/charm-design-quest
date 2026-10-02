@@ -179,8 +179,8 @@ export const INSTANT_LIFT_TREATMENT: TreatmentConfig = {
   heroVideoUrl:
     "https://pub-eb17aaa123fc4145b1ee4c15fc2e5771.r2.dev/Med%20Spa/Hero%20Video/LED%20Hero%20Video.mp4",
   price: "79.99",
-  originalPrice: "349.99",
-  appointmentTypeId: "91900403",
+  originalPrice: "249.99",
+  appointmentTypeId: "98985752",
   calendarId: "12769252",
   duration: 75,
   image: treatmentImage,
