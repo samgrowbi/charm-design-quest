@@ -12,9 +12,11 @@ interface BeforeAfterCardProps {
   className?: string;
   beforeAlt?: string;
   afterAlt?: string;
+  objectPosition?: string;
+  hideBadge?: boolean;
 }
 
-export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, className, beforeAlt, afterAlt }: BeforeAfterCardProps) {
+export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, className, beforeAlt, afterAlt, objectPosition = "center center", hideBadge = false }: BeforeAfterCardProps) {
   const [beforeError, setBeforeError] = useState(false);
   const [afterError, setAfterError] = useState(false);
   const [open, setOpen] = useState(false);
@@ -48,6 +50,7 @@ export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, classNa
                           alt={beforeAlt || `Before ${label} treatment`}
                           loading="lazy"
                           className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
+                          style={{ objectPosition }}
                           onError={() => setBeforeError(true)}
                       />
                     )}
@@ -62,11 +65,12 @@ export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, classNa
                           alt={afterAlt || `After ${label} treatment`}
                           loading="lazy"
                           className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
+                          style={{ objectPosition }}
                           onError={() => setAfterError(true)}
                       />
                     )}
                     {/* After 3 Sessions tag */}
-                    {!showAfterFallback && (
+                    {!showAfterFallback && !hideBadge && (
                       <span className="absolute top-2 right-2 lg:top-3 lg:right-3 px-2 py-0.5 lg:px-2.5 lg:py-1 text-[10px] lg:text-xs font-semibold uppercase tracking-wide bg-white/95 text-pink-600 rounded shadow-sm">
                         After 3 Sessions
                       </span>
