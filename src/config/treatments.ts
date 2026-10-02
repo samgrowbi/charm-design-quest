@@ -56,7 +56,7 @@ export interface TreatmentConfig {
   duration: number;
   /** Treatment image */
   image: string;
-  /** Intake fields (Acuity custom fields) that Sofia must collect */
+  /** Intake fields required by the Acuity appointment type */
   intakeFields: IntakeField[];
   /** Technology section copy */
   technologyDescription: string[];
