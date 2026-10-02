@@ -1,4 +1,16 @@
 import treatmentImage from "@/assets/treatment-facial.webp";
+import instantLift1Before from "@/assets/before-after/instant-lift-1-before.webp.asset.json";
+import instantLift1After from "@/assets/before-after/instant-lift-1-after.webp.asset.json";
+import instantLift2Before from "@/assets/before-after/instant-lift-2-before.webp.asset.json";
+import instantLift2After from "@/assets/before-after/instant-lift-2-after.webp.asset.json";
+import instantLift3Before from "@/assets/before-after/instant-lift-3-before.webp.asset.json";
+import instantLift3After from "@/assets/before-after/instant-lift-3-after.webp.asset.json";
+import instantLift4Before from "@/assets/before-after/instant-lift-4-before.webp.asset.json";
+import instantLift4After from "@/assets/before-after/instant-lift-4-after.webp.asset.json";
+import instantLift5Before from "@/assets/before-after/instant-lift-5-before.webp.asset.json";
+import instantLift5After from "@/assets/before-after/instant-lift-5-after.webp.asset.json";
+import instantLift6Before from "@/assets/before-after/instant-lift-6-before.webp.asset.json";
+import instantLift6After from "@/assets/before-after/instant-lift-6-after.webp.asset.json";
 
 export interface BeforeAfterResult {
   id: number;
@@ -44,7 +56,7 @@ export interface TreatmentConfig {
   duration: number;
   /** Treatment image */
   image: string;
-  /** Intake fields (Acuity custom fields) that Sofia must collect */
+  /** Intake fields required by the Acuity appointment type */
   intakeFields: IntakeField[];
   /** Technology section copy */
   technologyDescription: string[];
@@ -182,7 +194,14 @@ export const INSTANT_LIFT_TREATMENT: TreatmentConfig = {
   hideDeviceImage: true,
   intakeFields: [CONCERNS_FIELD, AGE_RANGE_FIELD, PROMO_TERMS_FIELD, SMS_CONSENT_FIELD],
   faqs: SHARED_FAQS,
-
+  beforeAfterResults: [
+    { id: 101, before: instantLift1Before.url, after: instantLift1After.url, label: "Facial Lifting", name: "Maria", age: 61 },
+    { id: 102, before: instantLift2Before.url, after: instantLift2After.url, label: "Skin Rejuvenation", name: "Jennifer", age: 55 },
+    { id: 103, before: instantLift3Before.url, after: instantLift3After.url, label: "Pigmentation", name: "Laura", age: 58 },
+    { id: 104, before: instantLift4Before.url, after: instantLift4After.url, label: "Skin Tightening", name: "Rachel", age: 68 },
+    { id: 105, before: instantLift5Before.url, after: instantLift5After.url, label: "Neck Rejuvenation", name: "Diana", age: 58 },
+    { id: 106, before: instantLift6Before.url, after: instantLift6After.url, label: "Skin Rejuvenation", name: "Catherine", age: 54 },
+  ],
 };
 
 export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
