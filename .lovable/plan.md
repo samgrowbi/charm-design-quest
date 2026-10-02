@@ -1,72 +1,45 @@
-
-# Task 2 - Full brand + treatment replacement, fixes, webhook
-
-## Inputs collected (from you)
-- Brand: Hermosa Medspa, Auburn WA, 1001 Outlet Collection Way, (253) 263-1162
-- Email: booking.nwcosmetics@gmail.com
-- IG: nw.cosmetics / FB: profile.php?id=61581351143541
-- Hours: Mon-Sat 10:00 AM - 06:00 PM, Sun 11:00 AM - 06:00 PM
-- Meta Pixel: 1977038163053432
-- Timezone: America/Los_Angeles
-- Acuity: Instant Lift 91900403/cal 11251085 · Baggy Eyes 89864520/cal 12769252 · LED+Cryo 91285301/cal 12769252
-- Treatments (3): Instant Lift $79.99/75min, Baggy Eyes $69.99/60min, LED+Cryo $89.99/60min
-- Logo/favicon: copy from NW Cosmetics V2
-- OG image: auto-generate
+# Landing page image and compactness update
 
 ## Scope
 
-### A. Sitewide brand replacement
-- Rewrite `src/config/brand.ts` (name, address, city, phone, email, socials, hours, maps link + embed).
-- Update `index.html` `<title>`, `<meta name=description>`, all `og:*`/`twitter:*`, JSON-LD (Organization + LocalBusiness).
-- Meta title template: `Hermosa Medspa | {Treatment Name}` - update the meta helper used per page.
-- Update `.lovable`/memory brand core rules to Hermosa (color palette stays pink, unless you say otherwise).
+- Update only the landing page result photos and requested landing page sections.
+- Leave the Baggy Eyes and LED + Cryo result images unchanged.
+- Preserve all copy, colors, fonts, forms, booking behavior, tracking IDs, routes, and unrelated sections.
 
-### B. Treatment surface rewire (3 total)
-- Keep `/` and `/instant-lift` -> Instant Lift.
-- Add new `/baggy-eyes` route + page + `/book/baggy-eyes` + `src/config/baggyEyes.ts`.
-- Keep `/led-cryo` + `/book/led-cryo`, update copy/price to $89.99/60min (already close).
-- Delete `/led`, `/body-sculpting`, `/book/led`, `/book/body-sculpting` routes + their page files + configs. Remove them from `treatmentRegistry.ts`.
-- Update `TreatmentContext` + `treatmentRegistry.ts` with the 3 live treatments' names, prices, durations, appointment type IDs, calendar IDs, copy pulled from hermosa-medspa.com.
-- Sitewide `#Spa in [City]` -> `#1 Spa in Auburn`.
+## Changes
 
-### C. Assets
-- Copy `hermosa-medspa-logo.png` and favicon from NW Cosmetics V2 into `src/assets/` and `public/`.
-- Wire logo into Navbar/Footer, wire favicon into `index.html`, remove old GLO+ logos.
-- Generate new 1200x630 OG image for Hermosa; save `public/og-image.jpg`; delete any leftover Elixir OG references.
+1. **Real People. Real Results**
+   - Download the six supplied combined before-and-after photos into the project.
+   - Split each photo at its center into matching before and after image files.
+   - Configure the Instant Lift landing page with exactly six result cards in the supplied order.
+   - Preserve the existing carousel, card dimensions, names and ages, badge, labels, slider behavior, aspect ratio, and image fit.
+   - Add descriptive before and after alt text while retaining lazy loading.
+   - Remove only the old face result imports and files that become unused.
 
-### D. Reviews
-- All review objects that carry a date get replaced with a random date in the last 30 days (no visible pattern). Applies to home + treatment pages.
+2. **Remove Sofia**
+   - Remove the floating Sofia button and chat window from the app.
+   - Delete the Sofia interface, its unused image, and its dedicated cloud function.
+   - Remove all Sofia imports and runtime references so no chatbot requests or console errors remain.
 
-### E. Off-by-one date bug
-- Audit booking + reschedule date pickers for `toISOString`/UTC pitfalls; force local-date formatting (`format(date, "yyyy-MM-dd")` via date-fns) when sending to Acuity so the booked date == selected date in America/Los_Angeles.
+3. **Remove review platform branding**
+   - Remove Google Maps, Yelp, and Trustpilot logo imports and their complete row from the About section.
+   - Delete those three unused logo assets and ensure no empty spacing remains.
 
-### F. Meta CAPI Purchase on "Checked in" / "Arrived"
-- Extend the existing Acuity offline webhook edge function: when `action` = `appointment.changed` and `label` is `Checked in` or `Arrived` (or similar Acuity status), send Meta CAPI `Purchase` event with `value` = treatment price (looked up by appointment type ID via `treatmentRegistry`) and `currency: USD`. Hash PII (email, phone, fn, ln) per Meta spec. Dedupe with `event_id = purchase_{appointmentId}`.
+4. **Compact Who Is This For on mobile**
+   - Below 768px only, reduce section padding, heading and body sizes, card padding, card gaps, and icon size by the requested proportions.
+   - Keep tablet and desktop presentation unchanged.
 
-### G. Dashes
-- Replace every `—` (em) and `–` (en) with `-` across `src/`, `supabase/functions/`, `index.html`, and memory files.
+5. **Compact five stats cards**
+   - Reduce section spacing, card padding, icon circles, values, labels, and gaps across screen sizes.
+   - Keep five cards in one desktop row.
+   - Keep a compact two-column mobile grid and center the fifth card without tall full-width cards.
+   - Preserve the pink accent, divider, content, and visual style.
 
-### H. Webhook for Acuity "catch all"
-- Reuse (or create) the existing offline-conversions edge function URL. I'll give you the URL to paste into Acuity's Integrations > Webhooks > "Any change" (catch-all).
-- **STOP** and wait for you to confirm it's added before Task 3.
+## Verification
 
-## Technical notes
-- Route change list in `src/App.tsx`: add BaggyEyes + BookBaggyEyes imports/routes; delete Index (LED), BodySculpting, BookLed, BookBodySculpting routes and remove unused imports.
-- Files to delete: `src/pages/Index.tsx` (LED page), `src/pages/BodySculpting.tsx`, `src/pages/BookLed.tsx`, `src/pages/BookBodySculpting.tsx`, `src/config/led.ts` if present.
-- Files to add: `src/pages/BaggyEyes.tsx`, `src/pages/BookBaggyEyes.tsx`, `src/config/baggyEyes.ts`.
-- Reviews live inline in the Reviews component; regenerate with `Math.random`-picked dates at build time and hardcode them so the layout stays static.
-- The offline-conversions webhook already exists (uses `META_CAPI_ACCESS_TOKEN`). I'll extend, not recreate.
-- No changes to: pink brand palette, Playfair headings, sticky BOOK NOW button copy, 100px horizontal padding, or the Sofia chatbot (that's Task 3).
-
-## Deliverable at end of Task 2
-- All brand info replaced.
-- 3 treatment surfaces live, old ones gone.
-- New OG image + favicon + logo wired.
-- Reviews randomized within last 30 days.
-- Off-by-one date bug fixed in book + reschedule.
-- Meta CAPI Purchase event wired for Checked in / Arrived.
-- No em/en dashes anywhere.
-- Webhook URL posted to you.
-- Task **stops** and waits for your confirmation Acuity is configured.
-
-Reply "go" to execute, or send edits.
+- Check the landing page at 1440px, 768px, and 375px for overlap, wrapping, spacing, and empty containers.
+- Confirm the six result cards load in order and their comparison dialogs still work.
+- Confirm the Baggy Eyes and LED + Cryo result images are unchanged.
+- Confirm Sofia and all three platform logos are absent with no console errors.
+- Confirm the existing Meta Pixel ID still loads and fires its page-view event.
+- Confirm the preview build is healthy.
