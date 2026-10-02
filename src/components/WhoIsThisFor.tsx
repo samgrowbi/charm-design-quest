@@ -30,7 +30,7 @@ const cardVariants: Variants = {
 
 export function WhoIsThisFor() {
   return (
-    <section className="py-4 md:py-8 lg:py-16 bg-gradient-to-b from-white via-pink-50/30 to-white" dir="ltr">
+    <section className="py-4 md:py-8 lg:py-16 bg-gradient-to-b from-white via-pink-50/30 to-white overflow-hidden" dir="ltr">
       <div className="container mx-auto px-5">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
