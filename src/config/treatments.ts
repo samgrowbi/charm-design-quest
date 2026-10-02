@@ -169,10 +169,10 @@ const SHARED_FAQS = [
 
 export const INSTANT_LIFT_TREATMENT: TreatmentConfig = {
   slug: "instant-lift",
-  label: "Instant Lift & Skin Tightening Treatment",
+  label: "Non Surgical Facelift Treatment",
   heroTitle: {
-    line1: "Instant Lift &",
-    highlight: "Skin Tightening",
+    line1: "Non Surgical",
+    highlight: "Facelift",
     line2: "Treatment",
   },
   heroSubtitle: "No Surgery. No Pain. Zero Downtime.",
@@ -185,7 +185,7 @@ export const INSTANT_LIFT_TREATMENT: TreatmentConfig = {
   duration: 75,
   image: treatmentImage,
   technologyDescription: [
-    "Our Instant Lift & Skin Tightening treatment delivers specific wavelengths of light energy into the skin's deeper layers, activating the body's own natural healing process of collagen production and cellular repair. The facial is entirely non-invasive, without heat, injectables, or foreign substances.",
+    "Our Non Surgical Facelift treatment delivers specific wavelengths of light energy into the skin's deeper layers, activating the body's own natural healing process of collagen production and cellular repair. The facial is entirely non-invasive, without heat, injectables, or foreign substances.",
   ],
   technologyHighlights: [
     { text: "Clinically tested" },
