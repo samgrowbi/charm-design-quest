@@ -259,6 +259,28 @@ export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
     { id: 204, before: baggyEyes4Before.url, after: baggyEyes4After.url, label: "Baggy Eyes", name: "Brianna", age: 34 },
     { id: 205, before: baggyEyes5Before.url, after: baggyEyes5After.url, label: "Baggy Eyes", name: "Rosalind", age: 42, objectPosition: "center top" },
   ],
+  visitSteps: [
+    {
+      title: "Consultation & Eye Analysis",
+      description:
+        "A brief, personalized assessment to understand your eye concerns and treatment goals.",
+    },
+    {
+      title: "Expert Under-Eye Preparation",
+      description:
+        "The delicate under-eye area is gently cleansed and prepared to ensure maximum comfort and effectiveness.",
+    },
+    {
+      title: "Treatment Session",
+      description:
+        "Advanced, non-invasive technology works around the eyes to reduce puffiness, brighten dark circles, and firm the under-eye area.",
+    },
+    {
+      title: "Post-Treatment Care & Guidance",
+      description:
+        "Soothing, eye-safe skincare is applied, along with clear aftercare guidance to support optimal results.",
+    },
+  ],
   faqs: [
 
     {
