@@ -17,3 +17,8 @@
 - [x] Update hero to supplied Cloudflare HLS with immediate loading and automatic thumbnail
 - [x] Replace only the Baggy Eyes Who We Are image with the uploaded photo
 - [x] Verify thumbnail, immediate manifest requests, replacement photo, and unchanged homepage media; test browser lacks H.264 support so moving playback is unverified
+
+# Baggy Eyes photo gaps
+
+- [ ] Remove embedded empty margins from all five Baggy Eyes photo pairs only
+- [ ] Verify filled cards at desktop, tablet, and mobile sizes and unchanged other pages
