@@ -1,4 +1,5 @@
 import treatmentImage from "@/assets/treatment-facial.webp";
+import baggyEyesAbout from "@/assets/baggy-eyes-about.png.asset.json";
 import instantLift1Before from "@/assets/before-after/instant-lift-1-before.webp.asset.json";
 import instantLift1After from "@/assets/before-after/instant-lift-1-after.webp.asset.json";
 import instantLift2Before from "@/assets/before-after/instant-lift-2-before.webp.asset.json";
@@ -56,6 +57,10 @@ export interface TreatmentConfig {
   heroSubtitle: string;
   /** Hero video URL */
   heroVideoUrl: string;
+  /** Optional thumbnail shown while the hero video loads */
+  heroVideoPoster?: string;
+  /** Optional treatment-specific Who We Are image */
+  aboutImage?: string;
   /** Pricing */
   price: string;
   originalPrice: string;
@@ -226,7 +231,10 @@ export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
   },
   heroSubtitle: "Refresh tired eyes. No needles. No downtime.",
   heroVideoUrl:
-    "https://pub-eb17aaa123fc4145b1ee4c15fc2e5771.r2.dev/Med%20Spa/Hero%20Video/LED%20Hero%20Video.mp4",
+    "https://customer-vgdtdepv6dn1f10z.cloudflarestream.com/949a9d969d572607d3f64ff985e27276/manifest/video.m3u8",
+  heroVideoPoster:
+    "https://customer-vgdtdepv6dn1f10z.cloudflarestream.com/949a9d969d572607d3f64ff985e27276/thumbnails/thumbnail.jpg",
+  aboutImage: baggyEyesAbout.url,
   price: "79.99",
   originalPrice: "249.99",
   appointmentTypeId: "98985636",
