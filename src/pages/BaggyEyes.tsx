@@ -48,7 +48,7 @@ const BaggyEyesInner = () => {
           <ProblemSolution />
           <Technology onBookingClick={openBooking} />
           <VisitSteps />
-          <Feedback />
+          {!BAGGY_EYES_TREATMENT.hideVideoTestimonials && <Feedback />}
           <ClientReviews />
           <FAQ />
           <About onBookingClick={openBooking} />
