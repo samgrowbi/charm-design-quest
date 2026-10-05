@@ -200,7 +200,7 @@ export const INSTANT_LIFT_TREATMENT: TreatmentConfig = {
   beforeAfterResults: [
     { id: 101, before: instantLift1Before.url, after: instantLift1After.url, label: "Facial Lifting", name: "Catherine", age: 38 },
     { id: 102, before: instantLift2Before.url, after: instantLift2After.url, label: "Skin Rejuvenation", name: "Margaret", age: 41, objectPosition: "center 30%" },
-    { id: 103, before: instantLift3Before.url, after: instantLift3After.url, label: "Pigmentation", name: "Elaine", age: 62, objectPosition: "center 30%" },
+    { id: 103, before: instantLift3Before.url, after: instantLift3After.url, label: "Pigmentation", name: "Elaine", age: 62, objectPosition: "center center" },
     { id: 104, before: instantLift4Before.url, after: instantLift4After.url, label: "Skin Tightening", name: "Brianna", age: 34 },
     { id: 105, before: instantLift5Before.url, after: instantLift5After.url, label: "Neck Rejuvenation", name: "Rosalind", age: 42 },
   ],
