@@ -14,6 +14,6 @@
 
 # Baggy Eyes media update
 
-- [ ] Update hero to supplied Cloudflare HLS with immediate loading and automatic thumbnail
-- [ ] Replace only the Baggy Eyes Who We Are image with the uploaded photo
-- [ ] Verify media and unchanged images on other treatment pages
+- [x] Update hero to supplied Cloudflare HLS with immediate loading and automatic thumbnail
+- [x] Replace only the Baggy Eyes Who We Are image with the uploaded photo
+- [x] Verify thumbnail, immediate manifest requests, replacement photo, and unchanged homepage media; test browser lacks H.264 support so moving playback is unverified
