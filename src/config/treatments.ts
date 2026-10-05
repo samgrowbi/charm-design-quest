@@ -279,6 +279,7 @@ export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
       title: "Treatment Session",
       description:
         "Advanced, non-invasive technology works around the eyes to reduce puffiness, brighten dark circles, and firm the under-eye area.",
+      image: baggyEyesStep3.url,
     },
     {
       title: "Post-Treatment Care & Guidance",
