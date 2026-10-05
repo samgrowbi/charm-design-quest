@@ -59,7 +59,7 @@ export function WhoIsThisFor() {
             Who Is This <AccentWord>For?</AccentWord>
           </h2>
           <p className="text-gray-500 text-sm md:text-lg lg:text-xl mt-2 md:mt-3 lg:mt-5 max-w-2xl mx-auto font-light">
-            {isBaggyEyes ? "Anyone noticing puffiness, dark circles, or tired-looking eyes" : "Anyone over 35 experiencing visible signs of skin aging"}
+            {isBaggyEyes ? "Anyone over 35 experiencing visible signs of tired eyes" : "Anyone over 35 experiencing visible signs of skin aging"}
           </p>
         </motion.div>
 
