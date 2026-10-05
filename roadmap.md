@@ -9,5 +9,5 @@
 
 # Baggy Eyes results update
 
-- [ ] Replace only Baggy Eyes results with five supplied photo pairs and exact names/ages
-- [ ] Hide Baggy Eyes result badges and verify comparison, framing, and other pages at requested widths
+- [x] Replace only Baggy Eyes results with five supplied photo pairs and exact names/ages
+- [x] Hide Baggy Eyes result badges and verify comparison, framing, and other pages at requested widths
