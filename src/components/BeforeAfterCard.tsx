@@ -14,9 +14,10 @@ interface BeforeAfterCardProps {
   afterAlt?: string;
   objectPosition?: string;
   hideBadge?: boolean;
+  hideComparisonSessionText?: boolean;
 }
 
-export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, className, beforeAlt, afterAlt, objectPosition = "center center", hideBadge = false }: BeforeAfterCardProps) {
+export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, className, beforeAlt, afterAlt, objectPosition = "center center", hideBadge = false, hideComparisonSessionText = false }: BeforeAfterCardProps) {
   const [beforeError, setBeforeError] = useState(false);
   const [afterError, setAfterError] = useState(false);
   const [open, setOpen] = useState(false);
@@ -100,7 +101,7 @@ export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, classNa
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="max-w-4xl p-0 bg-white overflow-hidden">
         <DialogTitle className="sr-only">{label} - Before and After Comparison</DialogTitle>
-        {canOpen && <BeforeAfterSlider beforeImg={beforeImg} afterImg={afterImg} />}
+        {canOpen && <BeforeAfterSlider beforeImg={beforeImg} afterImg={afterImg} hideSessionText={hideComparisonSessionText} />}
         <div className="px-4 py-3 text-center">
           <p className="text-sm text-gray-600">
             <span className="font-medium text-gray-900">{label}</span>
