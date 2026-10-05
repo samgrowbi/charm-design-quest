@@ -1,6 +1,7 @@
 import { motion, type Variants } from "motion/react";
 import { AccentWord } from "./ui/AccentWord";
-import { Waves, ArrowDownToLine, Sun, CloudMoon, Droplets, CircleDot } from "lucide-react";
+import { Waves, ArrowDownToLine, Sun, CloudMoon, Droplets, CircleDot, Eye, Moon } from "lucide-react";
+import { useTreatment } from "@/contexts/TreatmentContext";
 
 const concerns = [
   { text: "Wrinkles & Fine Lines", icon: Waves },
@@ -9,6 +10,15 @@ const concerns = [
   { text: "Dull or Tired-Looking Complexion", icon: CloudMoon },
   { text: "Redness & Skin Irritation", icon: Droplets },
   { text: "Enlarged Pores & Rough Texture", icon: CircleDot },
+];
+
+const baggyEyesConcerns = [
+  { text: "Puffy or Baggy Under-Eyes", icon: Eye },
+  { text: "Dark Circles", icon: Moon },
+  { text: "Crepey Under-Eye Skin", icon: Waves },
+  { text: "Fine Lines & Crow's Feet", icon: Sun },
+  { text: "Tired-Looking Eyes", icon: CloudMoon },
+  { text: "Morning Eye Swelling", icon: Droplets },
 ];
 
 const containerVariants: Variants = {
@@ -29,6 +39,9 @@ const cardVariants: Variants = {
 };
 
 export function WhoIsThisFor() {
+  const { treatment } = useTreatment();
+  const isBaggyEyes = treatment.slug === "baggy-eyes";
+  const items = isBaggyEyes ? baggyEyesConcerns : concerns;
   return (
     <section className="py-4 md:py-8 lg:py-16 bg-gradient-to-b from-white via-pink-50/30 to-white overflow-hidden" dir="ltr">
       <div className="container mx-auto px-5">
@@ -46,7 +59,7 @@ export function WhoIsThisFor() {
             Who Is This <AccentWord>For?</AccentWord>
           </h2>
           <p className="text-gray-500 text-sm md:text-lg lg:text-xl mt-2 md:mt-3 lg:mt-5 max-w-2xl mx-auto font-light">
-            Anyone over 35 experiencing visible signs of skin aging
+            {isBaggyEyes ? "Anyone noticing puffiness, dark circles, or tired-looking eyes" : "Anyone over 35 experiencing visible signs of skin aging"}
           </p>
         </motion.div>
 
@@ -57,7 +70,7 @@ export function WhoIsThisFor() {
           viewport={{ once: true, margin: "-10%" }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 md:gap-5 lg:gap-6 max-w-3xl lg:max-w-6xl mx-auto"
         >
-          {concerns.map(({ text, icon: Icon }) => (
+          {items.map(({ text, icon: Icon }) => (
             <motion.div
               key={text}
               variants={cardVariants}
