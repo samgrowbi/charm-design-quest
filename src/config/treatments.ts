@@ -10,16 +10,16 @@ import instantLift4Before from "@/assets/before-after/instant-lift-4-before.webp
 import instantLift4After from "@/assets/before-after/instant-lift-4-after.webp.asset.json";
 import instantLift5Before from "@/assets/before-after/instant-lift-5-before.webp.asset.json";
 import instantLift5After from "@/assets/before-after/instant-lift-5-after.webp.asset.json";
-import baggyEyes1Before from "@/assets/before-after/baggy-eyes-1-before.webp.asset.json";
-import baggyEyes1After from "@/assets/before-after/baggy-eyes-1-after.webp.asset.json";
-import baggyEyes2Before from "@/assets/before-after/baggy-eyes-2-before.webp.asset.json";
-import baggyEyes2After from "@/assets/before-after/baggy-eyes-2-after.webp.asset.json";
-import baggyEyes3Before from "@/assets/before-after/baggy-eyes-3-before.webp.asset.json";
-import baggyEyes3After from "@/assets/before-after/baggy-eyes-3-after.webp.asset.json";
-import baggyEyes4Before from "@/assets/before-after/baggy-eyes-4-before.webp.asset.json";
-import baggyEyes4After from "@/assets/before-after/baggy-eyes-4-after.webp.asset.json";
-import baggyEyes5Before from "@/assets/before-after/baggy-eyes-5-before.webp.asset.json";
-import baggyEyes5After from "@/assets/before-after/baggy-eyes-5-after.webp.asset.json";
+import baggyEyes1Before from "@/assets/before-after/baggy-eyes-1-before-filled.webp.asset.json";
+import baggyEyes1After from "@/assets/before-after/baggy-eyes-1-after-filled.webp.asset.json";
+import baggyEyes2Before from "@/assets/before-after/baggy-eyes-2-before-filled.webp.asset.json";
+import baggyEyes2After from "@/assets/before-after/baggy-eyes-2-after-filled.webp.asset.json";
+import baggyEyes3Before from "@/assets/before-after/baggy-eyes-3-before-filled.webp.asset.json";
+import baggyEyes3After from "@/assets/before-after/baggy-eyes-3-after-filled.webp.asset.json";
+import baggyEyes4Before from "@/assets/before-after/baggy-eyes-4-before-filled.webp.asset.json";
+import baggyEyes4After from "@/assets/before-after/baggy-eyes-4-after-filled.webp.asset.json";
+import baggyEyes5Before from "@/assets/before-after/baggy-eyes-5-before-filled.webp.asset.json";
+import baggyEyes5After from "@/assets/before-after/baggy-eyes-5-after-filled.webp.asset.json";
 
 export interface BeforeAfterResult {
   id: number;
@@ -257,7 +257,7 @@ export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
     { id: 202, before: baggyEyes2Before.url, after: baggyEyes2After.url, label: "Baggy Eyes", name: "Margaret", age: 41 },
     { id: 203, before: baggyEyes3Before.url, after: baggyEyes3After.url, label: "Baggy Eyes", name: "Elaine", age: 62 },
     { id: 204, before: baggyEyes4Before.url, after: baggyEyes4After.url, label: "Baggy Eyes", name: "Brianna", age: 34 },
-    { id: 205, before: baggyEyes5Before.url, after: baggyEyes5After.url, label: "Baggy Eyes", name: "Rosalind", age: 42 },
+    { id: 205, before: baggyEyes5Before.url, after: baggyEyes5After.url, label: "Baggy Eyes", name: "Rosalind", age: 42, objectPosition: "center top" },
   ],
   faqs: [
 
