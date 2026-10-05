@@ -303,6 +303,80 @@ export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
         "Anyone bothered by puffy under-eyes, dark circles, or fine lines around the eyes. It's a great non-surgical alternative to eye-lift procedures for people who want a refreshed look without surgery or injectables.",
     },
   ],
+  clientReviews: [
+    {
+      id: 1,
+      name: "Isabella Rodriguez",
+      image: "https://randomuser.me/api/portraits/women/44.jpg",
+      timeAgo: "JUL 26, 2026",
+      rating: 5,
+      review: "Ok so I almost didn't book because I've been burned before by fancy places that overpromise. But my sister dragged me here and WOW. My under-eyes look like I actually slept 8 hours for the first time in years?? Already booked my next one lol."
+    },
+    {
+      id: 2,
+      name: "Sarah Mitchell",
+      image: "https://randomuser.me/api/portraits/women/68.jpg",
+      timeAgo: "JUL 22, 2026",
+      rating: 5,
+      review: "I'm not exaggerating when I say my husband did a double take when I got home. He thought I got fillers or something. Nope, just the Baggy Eyes treatment! The puffiness is way down and my eyes just look... awake again. 10/10."
+    },
+    {
+      id: 3,
+      name: "Gabriela Santos",
+      image: "https://randomuser.me/api/portraits/women/33.jpg",
+      timeAgo: "JUL 18, 2026",
+      rating: 5,
+      review: "I was SO nervous going in because the skin around my eyes is super sensitive and everything irritates it. They actually listened and customized everything. No redness, no irritation, just brighter, rested-looking eyes. I literally cried happy tears in my car after."
+    },
+    {
+      id: 4,
+      name: "Amanda Rose",
+      image: "https://randomuser.me/api/portraits/women/85.jpg",
+      timeAgo: "JUL 15, 2026",
+      rating: 5,
+      review: "Three sessions in and my coworkers keep asking if I finally started sleeping. I just smile and say 'something like that' 😂 The bags under my eyes are so much flatter and I've stopped piling on concealer every morning. That's huge for me."
+    },
+    {
+      id: 5,
+      name: "Carolina Herrera",
+      image: "https://randomuser.me/api/portraits/women/91.jpg",
+      timeAgo: "JUL 11, 2026",
+      rating: 5,
+      review: "As a mom of 3 I never do anything for myself. This was my first 'me thing' in years and I ugly-cried on the way home because I forgot what it felt like to look rested. Already told all my mom friends. We're making it a monthly thing."
+    },
+    {
+      id: 6,
+      name: "Rachel Johnson",
+      image: "https://randomuser.me/api/portraits/women/26.jpg",
+      timeAgo: "JUL 08, 2026",
+      rating: 5,
+      review: "I've spent thousands on eye creams and serums over the years. One session here did more than all of that combined. I'm not even being dramatic. My under-eye area is smoother and the fine lines around my eyes are way less noticeable."
+    },
+    {
+      id: 7,
+      name: "Valentina Cruz",
+      image: "https://randomuser.me/api/portraits/women/17.jpg",
+      timeAgo: "JUL 04, 2026",
+      rating: 5,
+      review: "Came in for the puffiness and dark circles I'd been self-conscious about for YEARS. After 4 sessions the bags are noticeably gone and my eyes look brighter. I took a bare-face selfie for the first time in forever. This place changed my confidence honestly."
+    },
+    {
+      id: 8,
+      name: "Diana Miller",
+      image: "https://randomuser.me/api/portraits/women/63.jpg",
+      timeAgo: "JUN 30, 2026",
+      rating: 5,
+      review: "The girl at the front desk remembered my name on my second visit. Small thing but it made me feel so welcome. Oh and my eyes? SO much brighter. My daughter said I look younger than her and I'm going to ride that high for at least a month 😂"
+    },
+    {
+      id: 9,
+      name: "Sofia Morales",
+      image: "https://randomuser.me/api/portraits/women/79.jpg",
+      timeAgo: "JUL 24, 2026",
+      rating: 5,
+      review: "Full transparency: I was the biggest skeptic. A non-surgical eye treatment sounded too good to be true. But here I am writing a 5-star review because my under-eye bags are flatter, my dark circles are lighter, and I went to brunch without makeup last Sunday. Enough said."
+    },
+  ],
 };
 
 export const LED_CRYO_TREATMENT: TreatmentConfig = {
