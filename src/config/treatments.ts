@@ -272,6 +272,7 @@ export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
       title: "Expert Under-Eye Preparation",
       description:
         "The delicate under-eye area is gently cleansed and prepared to ensure maximum comfort and effectiveness.",
+      image: baggyEyesStep2.url,
     },
     {
       title: "Treatment Session",
