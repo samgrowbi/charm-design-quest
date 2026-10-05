@@ -3,6 +3,7 @@ import iconFineLines from "@/assets/icons/icon-fine-lines.webp";
 import iconFirmness from "@/assets/icons/icon-firmness.webp";
 import iconSoothe from "@/assets/icons/icon-soothe.webp";
 import { AccentWord } from "./ui/AccentWord";
+import { useTreatment } from "@/context/TreatmentContext";
 
 const benefitIcons = [iconFineLines, iconFirmness, iconSoothe];
 
@@ -21,9 +22,28 @@ const benefits = [
   },
 ];
 
+const baggyEyesBenefits = [
+  {
+    title: "Reduces Puffiness & Under-Eye Bags",
+    description: "De-puffs and smooths the under-eye area for a refreshed, well-rested look",
+  },
+  {
+    title: "Brightens Dark Circles",
+    description: "Improves circulation to soften shadows and restore a brighter under-eye area",
+  },
+  {
+    title: "Firms Crepey Under-Eye Skin",
+    description: "Boosts collagen to tighten thin, crepey skin and soften crow's feet",
+  },
+];
+
 const problemCopy = `As skin matures, it loses the collagen and elasticity that keep it firm, smooth, and radiant. Fine lines deepen. Skin loses its lift. Your complexion looks tired even when you're not. These aren't signs of neglect, they're biology. And no moisturiser or serum is going to reverse that on its own.`;
 
+const baggyEyesProblemCopy = `As the under-eye area matures, it loses the collagen and elasticity that keep it smooth and firm. Fat pads shift forward, creating puffiness and bags. Circulation slows, leaving shadows that make you look tired even when you're not. These aren't signs of neglect, they're biology. And no eye cream or serum is going to reverse that on its own.`;
+
 const bridgeLine = { text: "Your skin has changed.", highlight: "Your treatment should too." };
+
+const baggyEyesBridgeLine = { text: "Your eyes have changed.", highlight: "Your treatment should too." };
 
 export function ProblemSolution() {
   return (
