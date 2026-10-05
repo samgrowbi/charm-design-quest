@@ -5,9 +5,10 @@ interface BeforeAfterSliderProps {
   beforeImg: string;
   afterImg: string;
   className?: string;
+  hideSessionText?: boolean;
 }
 
-export function BeforeAfterSlider({ beforeImg, afterImg, className }: BeforeAfterSliderProps) {
+export function BeforeAfterSlider({ beforeImg, afterImg, className, hideSessionText = false }: BeforeAfterSliderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -57,7 +58,7 @@ export function BeforeAfterSlider({ beforeImg, afterImg, className }: BeforeAfte
 
       {/* Labels */}
       <span className="absolute top-3 left-3 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide bg-white/90 text-gray-700 rounded">Before</span>
-      <span className="absolute top-3 right-3 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide bg-pink-500 text-white rounded">After 3 Sessions</span>
+      <span className="absolute top-3 right-3 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide bg-pink-500 text-white rounded">{hideSessionText ? "After" : "After 3 Sessions"}</span>
 
       {/* Slider line */}
       <div

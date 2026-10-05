@@ -137,6 +137,7 @@ export function Results() {
                       age={'age' in item ? (item as any).age : undefined}
                       objectPosition={(item as any).objectPosition}
                       hideBadge={treatment.hideResultsBadges}
+                      hideComparisonSessionText={treatment.slug === "baggy-eyes"}
                       beforeAlt={treatment.hideResultsBadges && (item as any).name ? `Before and after treatment result - ${(item as any).name}, ${(item as any).age}` : `Before ${item.label.toLowerCase()} treatment${'name' in item && (item as any).name ? ` for ${(item as any).name}` : ''}`}
                       afterAlt={treatment.hideResultsBadges && (item as any).name ? `Before and after treatment result - ${(item as any).name}, ${(item as any).age}` : `After ${item.label.toLowerCase()} treatment${'name' in item && (item as any).name ? ` for ${(item as any).name}` : ''}`}
                     />
