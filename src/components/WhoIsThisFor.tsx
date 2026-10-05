@@ -1,7 +1,7 @@
 import { motion, type Variants } from "motion/react";
 import { AccentWord } from "./ui/AccentWord";
 import { Waves, ArrowDownToLine, Sun, CloudMoon, Droplets, CircleDot, Eye, Moon } from "lucide-react";
-import { useTreatment } from "@/contexts/TreatmentContext";
+import { useTreatment } from "@/context/TreatmentContext";
 
 const concerns = [
   { text: "Wrinkles & Fine Lines", icon: Waves },
