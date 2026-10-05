@@ -3,6 +3,7 @@ import baggyEyesAbout from "@/assets/baggy-eyes-about.png.asset.json";
 import baggyEyesStep1 from "@/assets/baggy-eyes-step-1.png.asset.json";
 import baggyEyesStep2 from "@/assets/baggy-eyes-step-2.png.asset.json";
 import baggyEyesStep3 from "@/assets/baggy-eyes-step-3.png.asset.json";
+import baggyEyesStep4 from "@/assets/baggy-eyes-step-4.png.asset.json";
 import instantLift1Before from "@/assets/before-after/instant-lift-1-before.webp.asset.json";
 import instantLift1After from "@/assets/before-after/instant-lift-1-after.webp.asset.json";
 import instantLift2Before from "@/assets/before-after/instant-lift-2-before.webp.asset.json";
@@ -285,6 +286,7 @@ export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
       title: "Post-Treatment Care & Guidance",
       description:
         "Soothing, eye-safe skincare is applied, along with clear aftercare guidance to support optimal results.",
+      image: baggyEyesStep4.url,
     },
   ],
   faqs: [
