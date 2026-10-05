@@ -91,6 +91,8 @@ export interface TreatmentConfig {
   beforeAfterResults?: BeforeAfterResult[];
   /** Hide session badges and "No Filters"/"Verified Photos" text in results */
   hideResultsBadges?: boolean;
+  /** Hide the video testimonial carousel section entirely */
+  hideVideoTestimonials?: boolean;
   /** Video testimonials */
   feedbackTestimonials?: { id: number; name: string; video: string; poster?: string; text: string }[];
   /** Visit steps */
@@ -256,6 +258,7 @@ export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
   hideDeviceImage: true,
   intakeFields: [PROMO_TERMS_FIELD, SMS_CONSENT_FIELD],
   hideResultsBadges: true,
+  hideVideoTestimonials: true,
   beforeAfterResults: [
     { id: 201, before: baggyEyes1Before.url, after: baggyEyes1After.url, label: "Baggy Eyes", name: "Catherine", age: 38, objectPosition: "center top" },
     { id: 202, before: baggyEyes2Before.url, after: baggyEyes2After.url, label: "Baggy Eyes", name: "Margaret", age: 41 },
