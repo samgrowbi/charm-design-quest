@@ -2,6 +2,7 @@ import treatmentImage from "@/assets/treatment-facial.webp";
 import baggyEyesAbout from "@/assets/baggy-eyes-about.png.asset.json";
 import baggyEyesStep1 from "@/assets/baggy-eyes-step-1.png.asset.json";
 import baggyEyesStep2 from "@/assets/baggy-eyes-step-2.png.asset.json";
+import baggyEyesStep3 from "@/assets/baggy-eyes-step-3.png.asset.json";
 import instantLift1Before from "@/assets/before-after/instant-lift-1-before.webp.asset.json";
 import instantLift1After from "@/assets/before-after/instant-lift-1-after.webp.asset.json";
 import instantLift2Before from "@/assets/before-after/instant-lift-2-before.webp.asset.json";
