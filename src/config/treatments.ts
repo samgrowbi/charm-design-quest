@@ -1,5 +1,6 @@
 import treatmentImage from "@/assets/treatment-facial.webp";
 import baggyEyesAbout from "@/assets/baggy-eyes-about.png.asset.json";
+import baggyEyesStep1 from "@/assets/baggy-eyes-step-1.png.asset.json";
 import instantLift1Before from "@/assets/before-after/instant-lift-1-before.webp.asset.json";
 import instantLift1After from "@/assets/before-after/instant-lift-1-after.webp.asset.json";
 import instantLift2Before from "@/assets/before-after/instant-lift-2-before.webp.asset.json";
@@ -264,6 +265,7 @@ export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
       title: "Consultation & Eye Analysis",
       description:
         "A brief, personalized assessment to understand your eye concerns and treatment goals.",
+      image: baggyEyesStep1.url,
     },
     {
       title: "Expert Under-Eye Preparation",
