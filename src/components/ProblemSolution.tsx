@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Eye, Moon, Waves } from "lucide-react";
 import iconFineLines from "@/assets/icons/icon-fine-lines.webp";
 import iconFirmness from "@/assets/icons/icon-firmness.webp";
 import iconSoothe from "@/assets/icons/icon-soothe.webp";
@@ -6,6 +7,8 @@ import { AccentWord } from "./ui/AccentWord";
 import { useTreatment } from "@/context/TreatmentContext";
 
 const benefitIcons = [iconFineLines, iconFirmness, iconSoothe];
+
+const baggyEyesIcons = [Eye, Moon, Waves];
 
 const benefits = [
   {
