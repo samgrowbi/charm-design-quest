@@ -77,10 +77,10 @@ export function ProblemSolution() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <p className="text-gray-700 text-[17px] md:text-lg lg:text-2xl xl:text-[26px] leading-relaxed font-light text-left">
-              {problemCopy}
+              {copy}
             </p>
             <p className="text-lg md:text-xl lg:text-3xl xl:text-4xl uppercase tracking-[0.2em] text-pink-500 font-medium mt-6 lg:mt-10 text-left">
-              {bridgeLine.text} <span className="text-pink-500">{bridgeLine.highlight}</span>
+              {bridge.text} <span className="text-pink-500">{bridge.highlight}</span>
             </p>
           </motion.div>
 
@@ -92,7 +92,7 @@ export function ProblemSolution() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="space-y-3 lg:space-y-5"
           >
-            {benefits.map((b, i) => {
+            {items.map((b, i) => {
               const icon = benefitIcons[i];
               return (
                 <motion.div
