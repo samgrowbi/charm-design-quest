@@ -3,6 +3,7 @@ import iconFineLines from "@/assets/icons/icon-fine-lines.webp";
 import iconFirmness from "@/assets/icons/icon-firmness.webp";
 import iconSoothe from "@/assets/icons/icon-soothe.webp";
 import { AccentWord } from "./ui/AccentWord";
+import { useTreatment } from "@/context/TreatmentContext";
 
 const benefitIcons = [iconFineLines, iconFirmness, iconSoothe];
 
@@ -21,11 +22,35 @@ const benefits = [
   },
 ];
 
+const baggyEyesBenefits = [
+  {
+    title: "Reduces Puffiness & Under-Eye Bags",
+    description: "De-puffs and smooths the under-eye area for a refreshed, well-rested look",
+  },
+  {
+    title: "Brightens Dark Circles",
+    description: "Improves circulation to soften shadows and restore a brighter under-eye area",
+  },
+  {
+    title: "Firms Crepey Under-Eye Skin",
+    description: "Boosts collagen to tighten thin, crepey skin and soften crow's feet",
+  },
+];
+
 const problemCopy = `As skin matures, it loses the collagen and elasticity that keep it firm, smooth, and radiant. Fine lines deepen. Skin loses its lift. Your complexion looks tired even when you're not. These aren't signs of neglect, they're biology. And no moisturiser or serum is going to reverse that on its own.`;
+
+const baggyEyesProblemCopy = `As the under-eye area matures, it loses the collagen and elasticity that keep it smooth and firm. Fat pads shift forward, creating puffiness and bags. Circulation slows, leaving shadows that make you look tired even when you're not. These aren't signs of neglect, they're biology. And no eye cream or serum is going to reverse that on its own.`;
 
 const bridgeLine = { text: "Your skin has changed.", highlight: "Your treatment should too." };
 
+const baggyEyesBridgeLine = { text: "Your eyes have changed.", highlight: "Your treatment should too." };
+
 export function ProblemSolution() {
+  const treatment = useTreatment();
+  const isBaggyEyes = treatment.slug === "baggy-eyes";
+  const items = isBaggyEyes ? baggyEyesBenefits : benefits;
+  const copy = isBaggyEyes ? baggyEyesProblemCopy : problemCopy;
+  const bridge = isBaggyEyes ? baggyEyesBridgeLine : bridgeLine;
   return (
     <section className="py-4 md:py-8 lg:py-16 bg-white" dir="ltr">
       <div className="container mx-auto px-5">
@@ -52,10 +77,10 @@ export function ProblemSolution() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <p className="text-gray-700 text-[17px] md:text-lg lg:text-2xl xl:text-[26px] leading-relaxed font-light text-left">
-              {problemCopy}
+              {copy}
             </p>
             <p className="text-lg md:text-xl lg:text-3xl xl:text-4xl uppercase tracking-[0.2em] text-pink-500 font-medium mt-6 lg:mt-10 text-left">
-              {bridgeLine.text} <span className="text-pink-500">{bridgeLine.highlight}</span>
+              {bridge.text} <span className="text-pink-500">{bridge.highlight}</span>
             </p>
           </motion.div>
 
@@ -67,7 +92,7 @@ export function ProblemSolution() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="space-y-3 lg:space-y-5"
           >
-            {benefits.map((b, i) => {
+            {items.map((b, i) => {
               const icon = benefitIcons[i];
               return (
                 <motion.div
