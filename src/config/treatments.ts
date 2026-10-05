@@ -286,6 +286,7 @@ export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
       title: "Post-Treatment Care & Guidance",
       description:
         "Soothing, eye-safe skincare is applied, along with clear aftercare guidance to support optimal results.",
+      image: baggyEyesStep4.url,
     },
   ],
   faqs: [
