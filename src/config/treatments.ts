@@ -253,7 +253,7 @@ export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
   intakeFields: [PROMO_TERMS_FIELD, SMS_CONSENT_FIELD],
   hideResultsBadges: true,
   beforeAfterResults: [
-    { id: 201, before: baggyEyes1Before.url, after: baggyEyes1After.url, label: "Baggy Eyes", name: "Catherine", age: 38 },
+    { id: 201, before: baggyEyes1Before.url, after: baggyEyes1After.url, label: "Baggy Eyes", name: "Catherine", age: 38, objectPosition: "center top" },
     { id: 202, before: baggyEyes2Before.url, after: baggyEyes2After.url, label: "Baggy Eyes", name: "Margaret", age: 41 },
     { id: 203, before: baggyEyes3Before.url, after: baggyEyes3After.url, label: "Baggy Eyes", name: "Elaine", age: 62 },
     { id: 204, before: baggyEyes4Before.url, after: baggyEyes4After.url, label: "Baggy Eyes", name: "Brianna", age: 34 },
