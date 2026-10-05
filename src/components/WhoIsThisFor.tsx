@@ -39,7 +39,7 @@ const cardVariants: Variants = {
 };
 
 export function WhoIsThisFor() {
-  const { treatment } = useTreatment();
+  const treatment = useTreatment();
   const isBaggyEyes = treatment.slug === "baggy-eyes";
   const items = isBaggyEyes ? baggyEyesConcerns : concerns;
   return (
