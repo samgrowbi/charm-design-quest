@@ -2,6 +2,7 @@ import { Button } from "./ui/button";
 import { motion } from "motion/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRef, useEffect } from "react";
+import Hls from "hls.js";
 import { useTreatment } from "@/context/TreatmentContext";
 
 import { AccentWord } from "./ui/AccentWord";
@@ -35,14 +36,30 @@ export function Hero({ onBookingClick }: HeroProps) {
   };
 
   useEffect(() => {
+    const video = videoContainerRef.current?.querySelector("video");
+    let hls: Hls | undefined;
+    if (video && treatment.heroVideoUrl.endsWith(".m3u8")) {
+      if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = treatment.heroVideoUrl;
+        video.load();
+      } else if (Hls.isSupported()) {
+        hls = new Hls({ enableWorker: true, autoStartLoad: true });
+        hls.loadSource(treatment.heroVideoUrl);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, attemptPlay);
+      } else {
+        video.src = treatment.heroVideoUrl;
+      }
+    }
     attemptPlay();
     window.addEventListener("touchstart", attemptPlay, { passive: true, once: true });
     window.addEventListener("click", attemptPlay, { once: true });
     return () => {
+      hls?.destroy();
       window.removeEventListener("touchstart", attemptPlay as any);
       window.removeEventListener("click", attemptPlay as any);
     };
-  }, []);
+  }, [treatment.heroVideoUrl]);
 
   const appointmentTypeID = treatment.appointmentTypeId || DEFAULT_ACUITY_APPOINTMENT_TYPE_ID;
   const calendarID = treatment.calendarId || DEFAULT_ACUITY_CALENDAR_ID;
@@ -120,10 +137,11 @@ export function Hero({ onBookingClick }: HeroProps) {
           playsInline
           // @ts-ignore
           webkit-playsinline="true"
-          preload="metadata"
+          preload={treatment.heroVideoUrl.endsWith(".m3u8") ? "auto" : "metadata"}
           // @ts-ignore
           fetchpriority="high"
-          src={treatment.heroVideoUrl}
+          poster={treatment.heroVideoPoster}
+          src={treatment.heroVideoUrl.endsWith(".m3u8") ? undefined : treatment.heroVideoUrl}
         />
         <div className="absolute inset-0 bg-black/[0.15] backdrop-blur-[1px]" />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-black/20 to-gray-950/80 motion-safe:animate-ken-burns" />
