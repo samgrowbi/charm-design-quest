@@ -11,3 +11,9 @@
 
 - [x] Replace only Baggy Eyes results with five supplied photo pairs and exact names/ages
 - [x] Hide Baggy Eyes result badges and verify comparison, framing, and other pages at requested widths
+
+# Baggy Eyes media update
+
+- [ ] Update hero to supplied Cloudflare HLS with immediate loading and automatic thumbnail
+- [ ] Replace only the Baggy Eyes Who We Are image with the uploaded photo
+- [ ] Verify media and unchanged images on other treatment pages
