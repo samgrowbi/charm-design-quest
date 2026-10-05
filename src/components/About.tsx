@@ -10,6 +10,8 @@ interface AboutProps {
 }
 
 export function About({ onBookingClick }: AboutProps) {
+  const treatment = useTreatment();
+  const aboutImage = treatment.aboutImage || aboutHero;
 
   return (
     <section id="about" className="py-4 md:py-8 lg:py-16 bg-white relative overflow-hidden" dir="ltr">
@@ -23,7 +25,7 @@ export function About({ onBookingClick }: AboutProps) {
           <div className="hidden lg:block w-full lg:w-1/2 relative self-stretch">
             <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl shadow-rose-100/50 border border-rose-100/60 group">
               <img
-                src={aboutHero}
+                src={aboutImage}
                 alt="Facial treatment"
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
@@ -51,7 +53,7 @@ export function About({ onBookingClick }: AboutProps) {
             <div className="block lg:hidden w-full relative">
               <div className="relative rounded-2xl overflow-hidden shadow-xl shadow-rose-100/50 border border-rose-100/60 group">
                 <img
-                  src={aboutHero}
+                  src={aboutImage}
                   alt="Facial treatment"
                   loading="lazy"
                   className="w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
