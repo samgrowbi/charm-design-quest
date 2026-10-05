@@ -257,7 +257,7 @@ export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
     { id: 202, before: baggyEyes2Before.url, after: baggyEyes2After.url, label: "Baggy Eyes", name: "Margaret", age: 41 },
     { id: 203, before: baggyEyes3Before.url, after: baggyEyes3After.url, label: "Baggy Eyes", name: "Elaine", age: 62 },
     { id: 204, before: baggyEyes4Before.url, after: baggyEyes4After.url, label: "Baggy Eyes", name: "Brianna", age: 34 },
-    { id: 205, before: baggyEyes5Before.url, after: baggyEyes5After.url, label: "Baggy Eyes", name: "Rosalind", age: 42 },
+    { id: 205, before: baggyEyes5Before.url, after: baggyEyes5After.url, label: "Baggy Eyes", name: "Rosalind", age: 42, objectPosition: "center top" },
   ],
   faqs: [
 
