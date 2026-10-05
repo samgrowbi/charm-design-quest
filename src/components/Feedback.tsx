@@ -189,6 +189,7 @@ function TestimonialCard({ item, isPlaying, onPlay, onPause }: TestimonialCardPr
 
 export function Feedback() {
   const treatment = useTreatment();
+  if (treatment.hideVideoTestimonials) return null;
   const testimonials = treatment.feedbackTestimonials || defaultTestimonials;
   const [api, setApi] = useState<CarouselApi>();
   const [activeIndex, setActiveIndex] = useState(0);
