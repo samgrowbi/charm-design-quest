@@ -46,6 +46,11 @@ const bridgeLine = { text: "Your skin has changed.", highlight: "Your treatment 
 const baggyEyesBridgeLine = { text: "Your eyes have changed.", highlight: "Your treatment should too." };
 
 export function ProblemSolution() {
+  const treatment = useTreatment();
+  const isBaggyEyes = treatment.slug === "baggy-eyes";
+  const items = isBaggyEyes ? baggyEyesBenefits : benefits;
+  const copy = isBaggyEyes ? baggyEyesProblemCopy : problemCopy;
+  const bridge = isBaggyEyes ? baggyEyesBridgeLine : bridgeLine;
   return (
     <section className="py-4 md:py-8 lg:py-16 bg-white" dir="ltr">
       <div className="container mx-auto px-5">
