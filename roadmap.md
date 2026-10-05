@@ -20,6 +20,6 @@
 
 # Baggy Eyes photo gaps
 
-- [ ] Remove embedded empty margins from all five Baggy Eyes photo pairs only
-- [ ] Verify filled cards at desktop, tablet, and mobile sizes and unchanged other pages
-- [ ] Adjust Rosalind's Baggy Eyes photo framing so both eyes remain visible
+- [x] Remove embedded empty margins from all five Baggy Eyes photo pairs only
+- [x] Verify filled cards at desktop, tablet, and mobile sizes and unchanged other pages
+- [x] Adjust Rosalind's Baggy Eyes photo framing so both eyes remain visible
