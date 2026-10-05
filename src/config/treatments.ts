@@ -265,6 +265,7 @@ export const BAGGY_EYES_TREATMENT: TreatmentConfig = {
       title: "Consultation & Eye Analysis",
       description:
         "A brief, personalized assessment to understand your eye concerns and treatment goals.",
+      image: baggyEyesStep1.url,
     },
     {
       title: "Expert Under-Eye Preparation",
