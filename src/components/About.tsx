@@ -40,7 +40,7 @@ export function About({ onBookingClick }: AboutProps) {
               <p className="text-[18px] lg:text-base font-bold text-gray-400 tracking-wide uppercase mb-1 lg:mb-3">Who We Are</p>
               <h2 className="text-4xl lg:text-5xl xl:text-6xl font-serif font-normal text-gray-900 mb-3 lg:mb-6 leading-tight">
                 Where Expertise Meets{" "}
-                <AccentWord>Results</AccentWord>
+                <AccentWord>Results</AccentWord>.
               </h2>
               <div className="text-gray-600 text-sm lg:text-lg xl:text-xl leading-relaxed font-light max-w-xl lg:max-w-2xl space-y-2 lg:space-y-4 text-justify">
                 <p className="font-semibold">{BRAND_NAME} is a {BUSINESS_CITY}-based aesthetic spa specializing in advanced skin and body treatments backed by clinically proven technology.</p>
